@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        .cell{
+            border-color:rgb(200, 200, 200);
+            border-style: none;
+            
+            background-color:rgb(240,240,240);
+        }
+        .container{
+            
+        }
+        .cell:hover{
+            background-color:rgb(100, 40, 100);
+        }
+        .cell:hover::after{
+            background-color:rgb(100,40,100);
+        }
+    </style>
+
+</head>
+<body>
+    <div class = "container">
+        
+
+    </div>
+    <button class = "reset">
+        Reset
+    </button>
+    <button class = "resize">
+        Resize
+    </button>
+</body>
+<script>
+
+    const container = document.querySelector(".container");
+    container.style.display = "grid";
+    container.style.width = "500px";
+    
+
+    //create grid of height and width 500px and (x)cells
+    function createGrid(size = 16){
+        let cellSize = (500/size) + 'px';
+        const container = document.querySelector(".container");
+        container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+        container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+        for (i = 0; i < size * size; i++){
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+            cell.style.width = cellSize;
+            cell.style.height = cellSize;
+
+            cell.addEventListener('mouseenter', e =>{
+                cell.style.backgroundColor = "rgb(100, 100, 100)";
+                cell.style.transition = "0.15s";
+            })
+            
+            container.appendChild(cell);
+        }
+        
+        
+    }
+    createGrid();
+
+    const resetButton = document.querySelector('.reset');
+    resetButton.addEventListener('click', () =>{
+        clearGrid();
+    });
+
+    const resizeButton = document.querySelector('.resize');
+    resizeButton.addEventListener('click', () =>{
+        let size = prompt("How many squares in your grid?");
+        clearGrid();
+        deleteGrid();
+        createGrid(size);
+    });
+
+    //clear grid
+    function clearGrid (){
+        let cells = document.querySelectorAll('.cell');
+        cells.forEach((cell) => {
+            cell.style.backgroundColor = "rgb(240, 240, 240)";
+        });
+    }
+
+    //delete grid
+    function deleteGrid(){
+        let grid = document.querySelectorAll('.cell');
+        grid.forEach((cell) => {
+            container.removeChild(cell);
+        })
+    }
+    
+    
+</script>
+</html>
