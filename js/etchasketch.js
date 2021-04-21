@@ -1,84 +1,4 @@
-<!DOCTYPE html>
-<head>
-    <style>
-        .cell{
-            background-color:rgb(240,240,240);
-            outline-style:solid;
-            outline-width:1px;
-            outline-color:rgb(180,180,180);
-            transition:0.4s;
-        }
-        body{
-            display:grid;
-            justify-content:center;
-            margin-top:5%;
-            background-color:rgb(20, 20, 50);
-        }
-        h1{
-            display:grid;
-            justify-self:center;
-            color:white;
-            font-family: sans-serif;
-        }
-        .buttonContainer{
-            display:;
-            width: 550px;
-            margin-top:30px;
-            margin-bottom:35px;
-        }
-        .gridContainer{
-            width:575px;
-            height:575px;
-            border-color:grey;;
-            border-left-style:solid;
-            border-top-style:solid;
-            border-width:3px;
-        }
-        button{
-            font-size:16px;
-            padding:10px;
-            margin-right: 10px;
-            margin-left:70px;
-            border-style:solid;
-            border-color:black;
-            width: 80px;
-            border-radius:15%;
-        }
-        .red{
-            display:grid;
-            background-color:rgb(240, 50, 50);
-            width:750px;
-            height:750px;
-            justify-items:center;
-            border-radius:10%;
-            box-shadow: 10px 10px 0px 7px rgb(200, 50, 50);
-        }
-    </style>
-
-</head>
-<body>
-    <div class = "red">
-        <h1>
-            Etch-a-Sketch
-        </h1>
-        <div class = "gridContainer">
-        </div>
-        <div class = "buttonContainer">
-            <button class = "reset">
-                Reset
-            </button>
-            <button class = "rgb">
-                RGB
-            </button>
-            <button class = "resize">
-                Resize
-            </button>
-        </div>
-    </div>
-</body>
-<script>
-
-    const gridContainer = document.querySelector(".gridContainer");
+const gridContainer = document.querySelector(".gridContainer");
     gridContainer.style.display = "grid";
     gridContainer.style.width = "575px";
     
@@ -100,6 +20,18 @@
                 cell.style.backgroundColor = "rgb(100, 100, 100)";
             })
             gridContainer.appendChild(cell);
+
+            //for touch screens
+            /*cell.addEventListener('touchstart', e =>{
+                cell.style.backgroundColor = "rgb(100, 100, 100)";
+            })
+            gridContainer.appendChild(cell);
+
+            cell.addEventListener('touchmove', e =>{
+                cell.style.backgroundColor = "rgb(100, 100, 100)";
+            })
+            gridContainer.appendChild(cell);
+            */
         }    
     }
     createGrid();
@@ -154,7 +86,3 @@
             gridContainer.removeChild(cell);
         })
     }
-    
-    
-</script>
-</html>

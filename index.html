@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<head>
+    <!--<style>
+        .cell{
+            background-color:rgb(240,240,240);
+            outline-style:solid;
+            outline-width:1px;
+            outline-color:rgb(180,180,180);
+            transition:0.4s;
+        }
+        body{
+            display:grid;
+            justify-content:center;
+            margin-top:5%;
+            background-color:rgb(20, 20, 50);
+        }
+        h1{
+            display:grid;
+            justify-self:center;
+            color:white;
+            font-family: sans-serif;
+        }
+        .buttonContainer{
+            display:;
+            width: 550px;
+            margin-top:30px;
+            margin-bottom:35px;
+        }
+        .gridContainer{
+            width:575px;
+            height:575px;
+            border-color:grey;;
+            border-left-style:solid;
+            border-top-style:solid;
+            border-width:3px;
+        }
+        button{
+            font-size:16px;
+            padding:10px;
+            margin-right: 10px;
+            margin-left:70px;
+            border-style:solid;
+            border-color:black;
+            width: 80px;
+            border-radius:15%;
+        }
+        .red{
+            display:grid;
+            background-color:rgb(240, 50, 50);
+            width:750px;
+            height:750px;
+            justify-items:center;
+            border-radius:10%;
+            box-shadow: 10px 10px 0px 7px rgb(200, 50, 50);
+        }
+    </style>-->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class = "red">
+        <h1>
+            Etch-a-Sketch
+        </h1>
+        <div class = "gridContainer">
+        </div>
+        <div class = "buttonContainer">
+            <button class = "reset">
+                Reset
+            </button>
+            <button class = "rgb">
+                RGB
+            </button>
+            <button class = "resize">
+                Resize
+            </button>
+        </div>
+    </div>
+    <script src="js/etchasketch.js"></script>
+</body>
+<!--<script>
+
+    const gridContainer = document.querySelector(".gridContainer");
+    gridContainer.style.display = "grid";
+    gridContainer.style.width = "575px";
+    
+
+    //create grid of height and width 500px and (x)cells
+    function createGrid(size = 16){
+        let cellSize = (575/size) + 'px';
+        const grid = document.querySelector(".gridContainer");
+        grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+        grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+        for (i = 0; i < size * size; i++){
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+            cell.style.width = cellSize;
+            cell.style.height = cellSize;
+
+            cell.addEventListener('mouseenter', e =>{
+                cell.style.backgroundColor = "rgb(100, 100, 100)";
+            })
+            gridContainer.appendChild(cell);
+        }    
+    }
+    createGrid();
+
+    const resetButton = document.querySelector('.reset');
+    resetButton.addEventListener('click', () =>{
+        clearGrid();
+    });
+
+    //produce random color
+    function randomColor(){
+        let  random = Math.floor(Math.random()*16777215).toString(16);
+        return random;
+    }
+
+    //rgb button
+    const rgbButton = document.querySelector('.rgb');
+    rgbButton.addEventListener('click', () => {
+        let size = prompt("how many squares in your colorful grid?");
+        clearGrid();
+        deleteGrid();
+        createGrid(size);
+        for (j = 0; j < size * size; j++) {
+            const cell = document.querySelector('.cell');
+            cell.addEventListener('mouseenter', e =>{
+                cell.style.backgroundColor = "#" + randomColor();
+            });
+            gridContainer.appendChild(cell);
+        }
+    })
+    //resize button
+    const resizeButton = document.querySelector('.resize');
+    resizeButton.addEventListener('click', () =>{
+        let size = prompt("How many squares in your grid?");
+        clearGrid();
+        deleteGrid();
+        createGrid(size);
+    });
+
+    //clear grid
+    function clearGrid (){
+        let cells = document.querySelectorAll('.cell');
+        cells.forEach((cell) => {
+            cell.style.backgroundColor = "rgb(240, 240, 240)";
+        });
+    }
+
+    //delete grid
+    function deleteGrid(){
+        let grid = document.querySelectorAll('.cell');
+        grid.forEach((cell) => {
+            gridContainer.removeChild(cell);
+        })
+    }
+    
+    
+</script>-->
+</html>
